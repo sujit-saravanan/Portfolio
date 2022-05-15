@@ -12,31 +12,55 @@
 
     <div class = "workspace">
         <ul class = "applications">
-            <li id = "Skills" class = "application" ondblclick="run()" tabindex="0">
+            <li id = "Skills" class = "application" ondblclick="showWindow(this.id)" tabindex="0">
                 <img class="application-icon" src="images/WordPadDocument32.png">
-                <p class="application-name">Skills</p>
+                <p id = "SkillsName" class="application-name">Skills</p>
             </li>
 
-            <li id = "Projects" class = "application" ondblclick="run()" tabindex="0">
+            <li id = "Projects" class = "application" ondblclick="showWindow(this.id)" tabindex="0">
                 <img class="application-icon" src="images/Folder32.png">
-                <p class="application-name">Projects</p>
+                <p id = "ProjectsName" class="application-name">Projects</p>
             </li class = "application">
 
-            <li id = "Contact Me" class = "application" ondblclick="run()" tabindex="0">
+            <li id = "ContactMe" class = "application" ondblclick="showWindow(this.id)" tabindex="0">
                 <img class="application-icon" src="images/Mailbox32.png">
-                <p class="application-name">Contact Me</p>
+                <p id = "ContactMeName" class="application-name">Contact Me</p>
             </li>
         </ul>
     </div>
 
-    <div class="taskbar">
-        <div class="startbutton">
+    <div id="taskbar">
+        <div id="startbutton">
             <img class="startbuttonimage" src="images/starticon.png">
             <div class="startbuttontext">Start</div>
         </div>
-        <div class="clock">
+        <div id="clock">
             <div id="time"></div>
         </div>
+    </div>
+
+    <div class = "window" id = "ProjectsWindow">
+        <div class = "titlebar" id = "ProjectsWindowTitlebar">
+            Projects
+        </div>
+        toLocaleStringt
+        test
+    </div>
+
+    <div class = "window" id = "ContactMeWindow">
+        <div class = "titlebar" id = "ContactMeWindowTitlebar">
+            Contact Me
+        </div>
+        toLocaleStringt
+        test
+    </div>
+
+    <div class = "window" id = "SkillsWindow">
+        <div class = "titlebar" id = "SkillsWindowTitlebar">
+            Skills
+        </div>
+        toLocaleStringt
+        test
     </div>
 
     <script>

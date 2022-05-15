@@ -44,23 +44,41 @@ img {
     pointer-events: none;
 }
 
-.startbutton:not(:disabled):active {
-  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
-  padding: 2px 11px 0 13px;
+#startbutton:not(:disabled):active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+    padding: 0 5px 0px 15px;
 }
 
+#taskbarbutton:not(:disabled):active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+    padding: 0 5px 0px 15px;
+}
+  
+
 @media (not(hover)) {
-    .startbutton:not(:disabled):hover {
+    #startbutton:not(:disabled):hover {
+        box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+    }
+    #taskbarbutton:not(:disabled):hover {
         box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
     }
 }
 
-.startbutton:focus {
+#startbutton:focus {
   outline: 1px dotted #000000;
   outline-offset: -4px;
 }
 
-.startbutton::-moz-focus-inner {
+#startbutton::-moz-focus-inner {
+    border: 0;
+}
+
+#taskbarbutton:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+  }
+  
+#taskbarbutton::-moz-focus-inner {
     border: 0;
 }
 
@@ -68,7 +86,7 @@ img {
     font-family: msSansSerifBold;
 }
 
-.taskbar {
+#taskbar {
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
     background-color: #c3c3c3;
     width: 100%;
@@ -83,7 +101,7 @@ img {
     padding-top: 5px;
 }
 
-.startbutton {
+#startbutton {
     box-sizing: border-box;
     border: none;
     background: #c0c0c0;
@@ -92,11 +110,32 @@ img {
   
     min-width: 75px;
     min-height: 23px;
-    padding: 0 5px;
+    padding: 0 10px;
 
     height: 100%;
     display: flex;
     gap: .4rem;
+    margin-right: .1rem;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+#taskbarbutton {
+    box-sizing: border-box;
+    border: none;
+    background: #c0c0c0;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+    border-radius: 0;
+  
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 10px;
+
+    height: 100%;
+    display: flex;
+    gap: .4rem;
+    margin-right: .1rem;
     align-items: center;
 
     cursor: pointer;
@@ -115,7 +154,7 @@ img {
     user-select: none;
 }
 
-.clock {
+#clock {
     margin-left: auto;
 
     box-sizing: border-box;
@@ -182,4 +221,31 @@ img {
 
 .application:focus > .application-icon{
     filter: invert(11%) sepia(97%) saturate(3852%) hue-rotate(235deg) brightness(68%) contrast(121%);
+}
+
+
+.window {
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+}
+
+.titlebar {
+    padding: 0px;
+    cursor: move;
+    background-color: #2196F3;
+    color: #fff;
+}
+
+#SkillsWindow {
+    display: none;
+}
+
+#ProjectsWindow {
+    display: none;
+}
+
+#ContactMeWindow {
+    display: none;
 }
