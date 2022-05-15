@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body onload="startTime()">    
+
+    <div class = "workspace">
+        <ul class = "applications">
+            <li id = "Skills" class = "application" ondblclick="run()" tabindex="0">
+                <img class="application-icon" src="images/WordPadDocument32.png">
+                <p class="application-name">Skills</p>
+            </li>
+
+            <li id = "Projects" class = "application" ondblclick="run()" tabindex="0">
+                <img class="application-icon" src="images/Folder32.png">
+                <p class="application-name">Projects</p>
+            </li class = "application">
+
+            <li id = "Contact Me" class = "application" ondblclick="run()" tabindex="0">
+                <img class="application-icon" src="images/Mailbox32.png">
+                <p class="application-name">Contact Me</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="taskbar">
+        <div class="startbutton">
+            <img class="startbuttonimage" src="images/starticon.png">
+            <div class="startbuttontext">Start</div>
+        </div>
+        <div class="clock">
+            <div id="time"></div>
+        </div>
+    </div>
+
+    <script>
+        function startTime() {
+          const today = new Date();
+          document.getElementById('time').innerHTML = today.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+          setTimeout(startTime, 1000);
+        }
+        
+        function checkTime(i) {
+          if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+          return i;
+        }
+    </script>
+        <script src="main.js"></script> 
+
+</body>
+</html>
