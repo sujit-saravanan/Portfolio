@@ -49,17 +49,36 @@ img {
     padding: 0 5px 0px 15px;
 }
 
-#taskbarbutton:not(:disabled):active {
+.taskbarbutton:not(:disabled):active {
     box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
     padding: 0 5px 0px 15px;
 }
+
+.taskbarbuttonActive {
+    box-sizing: border-box;
+    border: none;
+    
+    background: repeating-conic-gradient(#fff 0% 25%, #bdbebd 0% 50%) 50% / 4px 4px;
+
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+    border-radius: 0;
   
+    min-width: 200px;
+    min-height: 23px;
+    padding: 0 5px 0px 15px;
+
+    height: 100%;
+    display: flex;
+    gap: .4rem;
+    margin-right: .1rem;
+    align-items: center;
+}
 
 @media (not(hover)) {
     #startbutton:not(:disabled):hover {
         box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
     }
-    #taskbarbutton:not(:disabled):hover {
+    .taskbarbutton:not(:disabled):hover {
         box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
     }
 }
@@ -73,12 +92,12 @@ img {
     border: 0;
 }
 
-#taskbarbutton:focus {
+.taskbarbutton:focus {
     outline: 1px dotted #000000;
     outline-offset: -4px;
   }
   
-#taskbarbutton::-moz-focus-inner {
+.taskbarbutton::-moz-focus-inner {
     border: 0;
 }
 
@@ -121,14 +140,14 @@ img {
     cursor: pointer;
 }
 
-#taskbarbutton {
+.taskbarbutton {
     box-sizing: border-box;
     border: none;
     background: #c0c0c0;
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
     border-radius: 0;
-  
-    min-width: 75px;
+    font-family: msSansSerif;
+    min-width: 200px;
     min-height: 23px;
     padding: 0 10px;
 
@@ -234,8 +253,13 @@ img {
 .titlebar {
     padding: 0px;
     cursor: move;
-    background-color: #2196F3;
+    background-color: #7b7d7b;
     color: #fff;
+    user-select: none;
+}
+
+#titlebarActive {
+    background-color: #00007b;
 }
 
 #SkillsWindow {

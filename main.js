@@ -17,6 +17,10 @@ if (document.addEventListener) {
 }
 
 function showWindow(id) {
+  if (activeWindows.includes(id+"Window")){
+    makeActiveWindow(id)
+    return
+  }
   const currentWindow = document.getElementById(id+"Window");
   currentWindow.style.display = "block";
   currentWindow.style.left = (window.innerWidth/2)-(currentWindow.offsetWidth/2) + "px";
@@ -25,17 +29,43 @@ function showWindow(id) {
   currentWindow.style.zIndex=(activeWindows.length);
   document.activeElement.blur();
   addElementToTaskbar(document.getElementById(id+"Name").innerText);
+  makeActiveWindow(id)
 }
 
 function addElementToTaskbar(name){
-  let taskbarButton = document.createElement('button');
+  const taskbarButton = document.createElement('button');
   taskbarButton.textContent = name;
   taskbarButton.style.marginLeft = ".1rem";
   taskbarButton.style.marginRight = ".1rem";
-  taskbarButton.id = "taskbarbutton";
+  taskbarButton.className = "taskbarbutton";
+  taskbarButton.id = name.replace(/ /g, '') + "Button"
+  taskbarButton.setAttribute('onclick', "makeActiveWindow(this.textContent)");
   document.getElementById("taskbar").insertBefore(taskbarButton, document.getElementById("clock"));
 }
 
+
+function bringWindowToFront(id){
+  deactivateTaskbarButton();
+  activeWindows = activeWindows.filter(item => item !== id);
+  activeWindows.unshift(id);
+  activeWindows.forEach((windowID, index) => document.getElementById(windowID).style.zIndex=(activeWindows.length-index))
+  setActiveTaskbarButton(id.substring(0, id.length - 6)+"Button");
+}
+
+function deactivateTaskbarButton(){
+  document.getElementById(activeWindows[0].substring(0, activeWindows[0].length - 6) + "Button").className = "taskbarbutton";
+}
+
+function setActiveTaskbarButton(id){
+  document.getElementById(id).className = "taskbarbuttonActive";
+}
+
+function makeActiveWindow(text){
+  const id = text.replace(/ /g, '') + "Window";
+  document.getElementById(activeWindows[0]).querySelector('.titlebar').id = "";
+  bringWindowToFront(id);
+  document.getElementById(activeWindows[0]).querySelector('.titlebar').id = "titlebarActive";
+}
 
 dragElement(document.getElementById("SkillsWindow"));
 dragElement(document.getElementById("ProjectsWindow"));
@@ -43,15 +73,12 @@ dragElement(document.getElementById("ContactMeWindow"));
 
 
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   document.getElementById(elmnt.id + "Titlebar").onmousedown = dragMouseDown;
   elmnt.onmousedown = updateZIndex;
   
-  function updateZIndex(e) {
-    activeWindows = activeWindows.filter(item => item !== elmnt.id);
-    activeWindows.unshift(elmnt.id);
-
-    activeWindows.forEach((windowID, index) => document.getElementById(windowID).style.zIndex=(activeWindows.length-index));
+  function updateZIndex() {
+    makeActiveWindow(elmnt.id.substring(0, elmnt.id.length - 6));
     document.onmouseup = closeDragElement;
   }
 
